@@ -95,12 +95,12 @@ app.post("/districts/", async (request, response) => {
     INSERT INTO
         district (district_name,state_id,cases,cured,active,deaths)
     VALUES
-        (${districtName},
+        ('${districtName}',
         ${stateId},
         ${cases},
         ${cured},
         ${active},
-        ${deaths},
+        ${deaths}
         );`;
   const addDistrict = await db.run(newDistrict);
   response.send("District Successfully Added");
@@ -146,7 +146,7 @@ app.put("/districts/:districtId/", async (request, response) => {
     UPDATE
        district
     SET 
-        district_name = ${districtName},
+        district_name = '${districtName}',
         state_id = ${stateId},
         cases = ${cases},
         cured = ${cured},
